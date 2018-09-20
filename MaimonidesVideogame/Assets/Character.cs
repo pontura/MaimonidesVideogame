@@ -38,8 +38,5 @@ public class Character : MonoBehaviour {
 			jumpCount = 0;
 		}
 
-
-
-		print (rb.velocity);
 	}
 }
