@@ -18,6 +18,7 @@ public class Coin : InteractiveObject {
 	}
 	void DestroyDelayed()
 	{
+		Events.OnAddCoin (1);
 		Destroy (this.gameObject);
 	}
 	void LookAtTarget(GameObject gameObject)

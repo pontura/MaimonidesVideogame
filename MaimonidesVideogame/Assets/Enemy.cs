@@ -20,5 +20,10 @@ public class Enemy : InteractiveObject {
 	{
 		transform.Translate (Vector3.forward * speed * Time.deltaTime);
 	}
+	void OnTriggerEnter(Collider other)
+	{
+		if(other.GetComponent<Weapon>())
+			Destroy (this.gameObject);
+	}
 
 }
