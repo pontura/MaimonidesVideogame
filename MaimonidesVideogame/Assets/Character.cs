@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Character : MonoBehaviour {
 
-	CharacterShooter shooter;
+	CharacterAttack characterAttack;
+	Weapons weapons;
 	public Animator anim;
 	public Rigidbody rb;
 	public int jumpForce;
@@ -17,11 +18,13 @@ public class Character : MonoBehaviour {
 	public enum actions
 	{
 		IDLE,
-		WALK
+		WALK,
+		PICKUP
 	}
 
 	void Start () {
-		shooter = GetComponent<CharacterShooter> ();
+		characterAttack = GetComponent<CharacterAttack> ();
+		weapons = GetComponent<Weapons> ();
 	}
 
 	void FixedUpdate () {
@@ -42,8 +45,11 @@ public class Character : MonoBehaviour {
 
 		transform.Rotate(Vector3.up * horizontal * speedRotation);
 
+		if (Input.GetButtonDown ("ChangeWeapon")) {
+			weapons.ChangeWeapon ();
+		}
 		if (Input.GetButtonDown ("Fire1")) {
-			shooter.Shoot ();
+			characterAttack.Attack ();
 		}
 		if(Input.GetButtonDown("Jump")){
 			if (rb.velocity.y == 0 || jumpCount <= 1) {
@@ -53,7 +59,6 @@ public class Character : MonoBehaviour {
 				rb.AddForce (Vector3.up * jumpForce);
 				jumpCount++;
 			}
-
 		}
 
 		else if (rb.velocity.y == 0) {
@@ -66,6 +71,8 @@ public class Character : MonoBehaviour {
 	{
 		if (action == actions.IDLE)
 			return;
+		if (action == actions.PICKUP)
+			return;		
 		action = actions.IDLE;
 		anim.Play ("idle");
 	}
@@ -73,7 +80,14 @@ public class Character : MonoBehaviour {
 	{
 		if (action == actions.WALK)
 			return;
+		if (action == actions.PICKUP)
+			return;
 		action = actions.WALK;
 		anim.Play ("walk");
+	}
+	public void PickUp()
+	{
+		action = actions.PICKUP;
+		anim.Play ("pickup");
 	}
 }

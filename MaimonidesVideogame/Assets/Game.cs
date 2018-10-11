@@ -10,6 +10,7 @@ public class Game : MonoBehaviour {
 	public int totalEnemies = 10;
 
 	void Start () {
+		return;
 		for (int a = 0; a < totalCoins; a++) {
 			Coin newCoin = Instantiate (coin);
 			newCoin.transform.SetParent (transform);

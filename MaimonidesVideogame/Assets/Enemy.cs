@@ -4,25 +4,19 @@ using UnityEngine;
 
 public class Enemy : InteractiveObject {
 	
-	public float speed;
+	public MoveToTarget moveToTarget;
+	public MoveNoDirection moveNoDirection;
 
 	void Update () {
 		if (target != null) {
-			LookAtTarget (target);
-			GotoTarget (target);
+			moveToTarget.Updated (target);
+		} else {
+			moveNoDirection.Updated ();
 		}
-	}
-	void LookAtTarget(GameObject gameObject)
-	{
-		transform.LookAt (gameObject.transform);
-	}
-	void GotoTarget(GameObject gameObject)
-	{
-		transform.Translate (Vector3.forward * speed * Time.deltaTime);
 	}
 	void OnTriggerEnter(Collider other)
 	{
-		if(other.GetComponent<Weapon>())
+		if(other.GetComponent<Bullet>())
 			Destroy (this.gameObject);
 	}
 

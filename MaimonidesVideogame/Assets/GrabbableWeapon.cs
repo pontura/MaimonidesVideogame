@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Coin : GrabbableItem {
+public class GrabbableWeapon : GrabbableItem {
+
+	public Weapon weapon;
 
 	public override void DestroyDelayed()
 	{
-		Events.OnAddCoin (1);
-
-		//llama a esta función un nivel arriba: (que está en GrabbableItem)
+		Events.OnGetWeapon (weapon);
 		base.DestroyDelayed ();
 	}
+
 }
