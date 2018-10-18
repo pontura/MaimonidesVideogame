@@ -15,5 +15,6 @@ public class InteractiveObject : MonoBehaviour {
 		target = null;
 	}
 	public virtual void OnStartActive() { }
-
+	public virtual void OnPathCollisionEnter(CollisionChecker.PathCollisionType type) { }
+	public virtual void OnPathCollisionExit(CollisionChecker.PathCollisionType type) { }
 }
