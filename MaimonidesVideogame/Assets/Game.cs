@@ -10,16 +10,10 @@ public class Game : MonoBehaviour {
 	public int totalEnemies = 10;
 
 	void Start () {
-		return;
 		for (int a = 0; a < totalCoins; a++) {
 			Coin newCoin = Instantiate (coin);
 			newCoin.transform.SetParent (transform);
 			newCoin.transform.position = new Vector3 (Random.Range (-23, 23), 5, Random.Range (-23, 23));
-		}
-		for (int a = 0; a < totalEnemies; a++) {
-			Enemy newEnemy = Instantiate (enemy);
-			newEnemy.transform.SetParent (transform); 	
-			newEnemy.transform.position = new Vector3 (Random.Range (-23, 23), 5, Random.Range (-23, 23));
 		}
 	}
 }

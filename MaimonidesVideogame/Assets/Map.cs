@@ -29,8 +29,19 @@ public class Map : MonoBehaviour {
 
 	void Update () {
 		mapCharacter.transform.localPosition = GetMapPosition(mapCharacter.character.transform.position);
-		foreach (MapCharacter enemyMapCharacter in mapEnemy)
-			enemyMapCharacter.transform.localPosition = GetMapPosition(enemyMapCharacter.character.transform.position);
+		MapCharacter mapCharacterToDestroy = null;
+		foreach (MapCharacter enemyMapCharacter in mapEnemy) {
+			if (enemyMapCharacter.character == null) {
+				mapCharacterToDestroy = enemyMapCharacter;
+			} else {
+				enemyMapCharacter.transform.localPosition = GetMapPosition (enemyMapCharacter.character.transform.position);
+			}
+		}
+		if (mapCharacterToDestroy != null) {
+			mapEnemy.Remove (mapCharacterToDestroy);
+			Destroy (mapCharacterToDestroy.gameObject);
+		}
+
 	}
 	Vector2 GetMapPosition(Vector3 pos)
 	{

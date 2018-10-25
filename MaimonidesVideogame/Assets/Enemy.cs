@@ -6,9 +6,15 @@ public class Enemy : InteractiveObject {
 	
 	public MoveToTarget moveToTarget;
 	public MoveNoDirection moveNoDirection;
+	public ShootToTarget shootToTarget;
 
 	float angle = 0;
-
+	void Start()
+	{
+		moveToTarget = GetComponent<MoveToTarget> ();
+		moveNoDirection = GetComponent<MoveNoDirection> ();
+		shootToTarget = GetComponent<ShootToTarget> ();
+	}
 	void Update () {
 		if (target != null) {
 			moveToTarget.Updated (target);
@@ -26,7 +32,11 @@ public class Enemy : InteractiveObject {
 		if(other.GetComponent<Bullet>())
 			Destroy (this.gameObject);
 	}
-
+	public override void OnStartActive() 
+	{ 
+		//El personaje entro:
+		shootToTarget.ShootAfter(1);
+	}
 	public override void OnPathCollisionEnter(CollisionChecker.PathCollisionType type) 
 	{ 
 		//cuando las 2 colisiones estén adentro.
@@ -42,7 +52,6 @@ public class Enemy : InteractiveObject {
 			angle = -1;
 			break;
 		}
-
 	}
 	public override void OnPathCollisionExit(CollisionChecker.PathCollisionType type) 
 	{ 

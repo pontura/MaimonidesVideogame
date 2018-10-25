@@ -90,4 +90,10 @@ public class Character : MonoBehaviour {
 		action = actions.PICKUP;
 		anim.Play ("pickup");
 	}
+	void OnTriggerEnter(Collider other)
+	{
+		if (other.GetComponent<Bullet> ()) {
+			Events.OnCharacterHitted (1);
+		}
+	}
 }

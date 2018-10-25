@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour {
 	
-	float speed = 100;
+	float speed = 40;
 	Rigidbody rb;
 	void Start()
 	{
@@ -18,5 +18,9 @@ public class Bullet : MonoBehaviour {
 	void Update () {
 		Vector3 vel = transform.forward * speed;
 		rb.velocity = vel;
+	}
+	void OnTriggerEnter(Collider other)
+	{
+		Destroy (this.gameObject);
 	}
 }

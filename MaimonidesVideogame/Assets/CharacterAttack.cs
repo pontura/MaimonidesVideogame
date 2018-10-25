@@ -25,6 +25,5 @@ public class CharacterAttack : MonoBehaviour {
 		Vector3 pos = transform.localPosition + transform.forward*2;
 		pos.y += 1;
 		newWeapon.transform.localPosition = pos;
-
 	}
 }
