@@ -14,6 +14,8 @@ public class MoveToTarget : MonoBehaviour {
 	}
 	void LookAtTarget(GameObject gameObject)
 	{
+		if (gameObject.transform.localPosition.y > 2)
+			return;
 		transform.LookAt (gameObject.transform);
 	}
 	void GotoTarget(GameObject gameObject)

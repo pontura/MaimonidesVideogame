@@ -11,7 +11,9 @@ public class EnemiesManager : MonoBehaviour {
 	void Start () {
 		Events.OnAddEnemy += OnAddEnemy;
 	}
-
+	void OnDestroy () {
+		Events.OnAddEnemy -= OnAddEnemy;
+	}
 	void OnAddEnemy (Transform t) {
 		Enemy newEnemy = Instantiate (enemy);
 		newEnemy.transform.SetParent (transform);

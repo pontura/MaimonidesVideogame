@@ -22,8 +22,8 @@ public class ShootToTarget : MonoBehaviour {
 		Invoke ("Shoot", 0.5f);
 		Bullet newWeapon = Instantiate (bullet);
 		newWeapon.transform.localEulerAngles = transform.localEulerAngles;
-		Vector3 pos = transform.localPosition + transform.forward*2;
-		pos.y += 1;
+		Vector3 pos = transform.localPosition + transform.forward*1;
+		pos.y += 2;
 		newWeapon.transform.localPosition = pos;
 	}
 

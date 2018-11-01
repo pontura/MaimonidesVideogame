@@ -29,8 +29,10 @@ public class Enemy : InteractiveObject {
 	}
 	void OnTriggerEnter(Collider other)
 	{
-		if(other.GetComponent<Bullet>())
+		if (other.GetComponent<Bullet> ()) {
+			//print ("die");
 			Destroy (this.gameObject);
+		}
 	}
 	public override void OnStartActive() 
 	{ 

@@ -5,6 +5,7 @@ using UnityEngine;
 public class Map : MonoBehaviour {
 
 	public MapCharacter mapCharacter_to_instantiate;
+	public MapCharacter mapEnemy_to_instantiate;
 
 	public Vector2 worldSize;
 	public Vector2 mapSize;
@@ -19,12 +20,19 @@ public class Map : MonoBehaviour {
 		mapCharacter = Instantiate (mapCharacter_to_instantiate);
 		mapCharacter.character = realCharacter.gameObject;
 		mapCharacter.transform.SetParent (transform);
-		foreach (Enemy enemy in realEnemy) {
-			MapCharacter mapCharacter = Instantiate (mapCharacter_to_instantiate);
-			mapCharacter.character = enemy.gameObject;
-			mapCharacter.transform.SetParent (transform);
-			mapEnemy.Add (mapCharacter);
-		}
+
+		Events.OnAddEnemy += OnAddEnemy;
+	}
+	void OnDestroy()
+	{
+		Events.OnAddEnemy -= OnAddEnemy;
+	}
+	void OnAddEnemy(Transform t)
+	{
+		MapCharacter mapCharacter = Instantiate (mapEnemy_to_instantiate);
+		mapCharacter.character = t.gameObject;
+		mapCharacter.transform.SetParent (transform);
+		mapEnemy.Add (mapCharacter);
 	}
 
 	void Update () {

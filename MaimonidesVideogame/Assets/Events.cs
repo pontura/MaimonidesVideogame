@@ -8,5 +8,5 @@ public static class Events {
 	public static System.Action<int> OnCharacterHitted = delegate {};
 	public static System.Action<int> OnAddCoin = delegate {};
 	public static System.Action<Weapon> OnGetWeapon = delegate {};
-
+	public static System.Action<bool, int> OnGameOver = delegate {};
 }

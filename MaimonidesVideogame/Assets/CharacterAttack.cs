@@ -20,6 +20,7 @@ public class CharacterAttack : MonoBehaviour {
 	}
 	public void OnGunAttack()
 	{
+		print ("ataca");
 		Bullet newWeapon = Instantiate (bullet);
 		newWeapon.transform.localEulerAngles = transform.localEulerAngles;
 		Vector3 pos = transform.localPosition + transform.forward*2;

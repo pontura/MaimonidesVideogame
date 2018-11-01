@@ -314,7 +314,7 @@ GameObject:
   - component: {fileID: 23709712831316504}
   - component: {fileID: 65676673043495828}
   - component: {fileID: 114575717481389120}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: CollisionChecker_Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -521,7 +521,7 @@ GameObject:
   - component: {fileID: 23575895534905942}
   - component: {fileID: 65917604344279002}
   - component: {fileID: 114211367766140538}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: CollisionChecker_Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1684,7 +1684,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 389840d56e9b9be43b9812f9c81610d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 114820852443267904, guid: 95bcf49dec2b7934db729a29571290dc, type: 2}
+  bullet: {fileID: 114820852443267904, guid: dd0d3de3f945f184cbe9ad9b75c4b718, type: 2}
 --- !u!114 &114993980976977852
 MonoBehaviour:
   m_ObjectHideFlags: 1
